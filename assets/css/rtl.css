@@ -1,0 +1,93 @@
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+html[dir="rtl"] .text-start {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .text-end {
+  text-align: left !important;
+}
+
+html[dir="rtl"] .me-3 {
+  margin-left: 1rem !important;
+  margin-right: 0 !important;
+}
+
+html[dir="rtl"] .ms-auto {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+html[dir="rtl"] .me-auto {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+html[dir="rtl"] .sidebar-nav-link {
+  border-left: none !important;
+  border-right: 3px solid transparent;
+}
+
+html[dir="rtl"] .sidebar-nav-link:hover, 
+html[dir="rtl"] .sidebar-nav-link.active {
+  border-left: none !important;
+  border-right: 3px solid var(--secondary-color) !important;
+}
+
+html[dir="rtl"] body:not(.dark-mode) .sidebar-nav-link:hover, 
+html[dir="rtl"] body:not(.dark-mode) .sidebar-nav-link.active {
+  border-left: none !important;
+  border-right: 3px solid var(--primary-color) !important;
+}
+
+html[dir="rtl"] .footer-link:hover {
+  padding-left: 0 !important;
+  padding-right: 5px !important;
+}
+
+html[dir="rtl"] .back-to-top {
+  right: auto;
+  left: -60px;
+}
+
+html[dir="rtl"] .back-to-top.show {
+  right: auto;
+  left: 30px;
+}
+
+/* Force brand logo SVGs to always layout LTR to prevent text overlapping icon in RTL mode */
+html[dir="rtl"] .navbar-brand svg,
+html[dir="rtl"] .dashboard-brand svg,
+html[dir="rtl"] .navbar-brand svg text,
+html[dir="rtl"] .dashboard-brand svg text {
+  direction: ltr !important;
+}
+
+/* Align hero section elements to the right in RTL mode on desktop viewports */
+@media (min-width: 992px) {
+  html[dir="rtl"] .hero-section .text-lg-start {
+    text-align: right !important;
+  }
+  html[dir="rtl"] .hero-section .justify-content-lg-start {
+    justify-content: flex-start !important;
+  }
+}
+
+/* Correct the input-group alignment and border-radius in RTL mode for the footer newsletter */
+html[dir="rtl"] .footer .input-group > .form-control {
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+html[dir="rtl"] .footer .input-group > .btn {
+  border-top-left-radius: 30px !important;
+  border-bottom-left-radius: 30px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  margin-left: 0 !important;
+  margin-right: -1px !important;
+}

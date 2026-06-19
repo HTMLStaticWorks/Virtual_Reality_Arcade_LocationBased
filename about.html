@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Nexus Arena | About Our Technology & Team</title>
+    <meta name="description" content="Learn about VR Nexus Arena's mission, advanced location-based VR equipment, safety sanitization protocols, and founders.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080B14'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Cpath d='M18 26h28a2 2 0 0 1 2 2v6a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-6a2 2 0 0 1 2-2z' fill='%236D28FF'/%3E%3C/svg%3E">
+</head>
+<body class="dark-mode">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl fixed-top navbar-custom py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <!-- SVG LOGO -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                  <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                  <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                  <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                  <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                  <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                  <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                  <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                  <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                  <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                </svg>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <i class="fa-solid fa-bars fs-3"></i>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header justify-content-between border-bottom border-secondary">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <!-- SVG LOGO -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                          <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                          <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                          <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                          <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                          <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                          <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                          <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                          <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                          <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                        </svg>
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto align-items-xl-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="home2.html">Home 2</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                        <li class="nav-item ms-xl-3 my-2 my-xl-0">
+                            <a href="login.html" class="btn btn-premium btn-sm w-100">Login</a>
+                        </li>
+
+                        <li class="nav-item ms-xl-3 d-flex gap-2 mt-3 mt-xl-0 align-items-center justify-content-center">
+                            <a href="#" id="rtl-toggle" class="topbar-action px-3" aria-label="Toggle RTL">RTL</a>
+                            <a href="#" id="theme-toggle" class="topbar-action px-3" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="position-relative d-flex align-items-center justify-content-center" style="height: 50vh; background: var(--dark-bg); margin-top: 76px;">
+        <div class="hero-overlay" style="background: radial-gradient(circle, rgba(109,40,255,0.15) 0%, rgba(8,11,20,0.95) 100%);"></div>
+        <div class="container position-relative z-2 text-center text-white fade-up">
+            <h1 class="hero-title mb-3" style="font-size: clamp(3rem, 6vw, 4.5rem);">Our Story</h1>
+            <p class="lead text-white-50">Redefining location-based gaming environments.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Vision Section -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="row align-items-center g-5 text-start">
+                    <div class="col-lg-6 fade-up text-center text-lg-start">
+                        <h2 class="section-title text-center text-lg-start">Step Beyond Reality</h2>
+                        <p class="text-muted mb-4">Founded in 2024, VR Nexus Arena has quickly become a leading brand in location-based virtual reality entertainment. We combine wireless multiplayer tracking arrays with advanced physical haptics to design an unmatched immersive gaming ecosystem.</p>
+                        <p class="text-muted">From corporate team building games to elite regional esports tournaments, we build portals that let players touch, feel, and conquer digital realities safely.</p>
+                    </div>
+                    <div class="col-lg-6 fade-up" style="transition-delay: 0.1s;">
+                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=800&q=80" alt="VR Player" class="img-fluid rounded" style="box-shadow: 0 20px 40px rgba(0,0,0,0.25);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety & Compliance Module -->
+        <section class="section-padding" style="background: var(--dark-bg); color: white;">
+            <div class="container">
+                <div class="text-center mb-5 fade-up">
+                    <h2 class="section-title text-white">Sanitization & Safety Protocols</h2>
+                    <p class="text-white-50 mx-auto" style="max-width: 600px;">Immersion is nothing without safety. We maintain medical-grade sanitization practices to guarantee a clean and comfortable experience.</p>
+                </div>
+                
+                <div class="row g-4 text-center">
+                    <div class="col-md-4 fade-up">
+                        <div class="glass-card p-4 h-100 d-flex flex-column align-items-center">
+                            <i class="fa-solid fa-virus-slash fs-1 mb-3 text-primary"></i>
+                            <h4 class="text-white">UV-C Light Sanitization</h4>
+                            <p class="text-white-50 small mt-auto">Every headset, controller, and haptic vest is placed inside specialized UV-C cabinets between game sessions.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-up" style="transition-delay: 0.05s;">
+                        <div class="glass-card p-4 h-100 d-flex flex-column align-items-center">
+                            <i class="fa-solid fa-headset fs-1 mb-3 text-info"></i>
+                            <h4 class="text-white">Zero Motion Sickness</h4>
+                            <p class="text-white-50 small mt-auto">We calibrate all displays at a minimum of 90Hz frame rates to match sensory feedback and eliminate motion sickness.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 fade-up" style="transition-delay: 0.1s;">
+                        <div class="glass-card p-4 h-100 d-flex flex-column align-items-center">
+                            <i class="fa-solid fa-shield-heart fs-1 mb-3 text-primary"></i>
+                            <h4 class="text-white">Eco-friendly Liners</h4>
+                            <p class="text-white-50 small mt-auto">Disposable leatherette face pads are provided to every player for absolute hygiene control.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founders & Team -->
+        <section class="section-padding bg-light position-relative z-2">
+            <div class="container">
+                <div class="text-center mb-5 fade-up">
+                    <h2 class="section-title">The Founders</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Meet the software architects and UX developers building the future of arcade gaming.</p>
+                </div>
+                
+                <div class="row g-5 justify-content-center">
+                    <div class="col-md-5 fade-up">
+                        <div class="card bg-transparent border-0 text-center">
+                            <div class="position-relative d-inline-block mb-4 mx-auto" style="width: 250px; height: 250px;">
+                                <div class="position-absolute w-100 h-100 rounded-circle" style="border: 2px solid var(--primary-color); transform: translate(-10px, 10px); z-index: 0;"></div>
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Marcus Thorne" class="rounded-circle position-relative z-1 object-fit-cover w-100 h-100" style="box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
+                            </div>
+                            <h4 class="mb-1 text-white" style="font-family: var(--font-heading);">Marcus Thorne</h4>
+                            <p class="text-muted small text-uppercase" style="letter-spacing: 2px;">Co-Founder & Chief VR Architect</p>
+                            <p class="text-muted small mt-3">With a background in hardware systems and spatial networking, Marcus manages the core server arrays and motion calibration setups.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5 fade-up" style="transition-delay: 0.1s;">
+                        <div class="card bg-transparent border-0 text-center">
+                            <div class="position-relative d-inline-block mb-4 mx-auto" style="width: 250px; height: 250px;">
+                                <div class="position-absolute w-100 h-100 rounded-circle" style="border: 2px solid var(--secondary-color); transform: translate(10px, 10px); z-index: 0;"></div>
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Elena Rostova" class="rounded-circle position-relative z-1 object-fit-cover w-100 h-100" style="box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
+                            </div>
+                            <h4 class="mb-1 text-white" style="font-family: var(--font-heading);">Elena Rostova</h4>
+                            <p class="text-muted small text-uppercase" style="letter-spacing: 2px;">Co-Founder & UX Creative Director</p>
+                            <p class="text-muted small mt-3">Elena leads player interface research and designs our custom environments, ensuring player accessibility and safety.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Behind the Lenses -->
+        <section class="section-padding position-relative text-white" style="background: var(--dark-bg); overflow: hidden;">
+            <div class="container position-relative z-2">
+                <div class="row align-items-center g-5 text-start">
+                    <div class="col-lg-6 fade-up">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=800&q=80" alt="Training Center" class="img-fluid rounded w-100" style="height: 500px; object-fit: cover; display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                            <div class="position-absolute bottom-0 end-0 p-4 bg-dark rounded text-center m-3" style="border-left: 4px solid var(--primary-color);">
+                                <h3 class="mb-0 text-white" style="font-family: var(--font-heading);">10,000<span class="fs-6 text-white-50 ms-1">sqft</span></h3>
+                                <p class="text-white-50 small mb-0">Total Arena Area</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 fade-up text-center text-lg-start" style="transition-delay: 0.1s;">
+                        <h2 class="section-title text-center text-lg-start text-white">Behind the Lenses</h2>
+                        <p class="text-white-50 mb-4">Every seamless session is powered by an advanced technological backend. We house custom cooling systems, dedicated fiber gigabit arrays, and high-fidelity network switches to ensure zero latency issues during co-op squad play.</p>
+                        <div class="d-flex flex-column align-items-center text-center flex-lg-row align-items-lg-start text-lg-start mb-4">
+                            <div class="bg-dark rounded-circle p-3 mb-3 me-0 me-lg-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;">
+                                <i class="fa-solid fa-server text-white fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white mb-1">Local Server Farms</h5>
+                                <p class="text-white-50 small mb-0">We host and execute all VR renders locally to achieve real-time response feedback and prevent latency.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column align-items-center text-center flex-lg-row align-items-lg-start text-lg-start">
+                            <div class="bg-dark rounded-circle p-3 mb-3 me-0 me-lg-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;">
+                                <i class="fa-solid fa-bolt text-white fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white mb-1">Backup Generators</h5>
+                                <p class="text-white-50 small mb-0">Dual-layer electrical grid safeguards prevent session halts or headset shutoffs during city network dropouts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 text-center text-lg-start">
+                    <a class="navbar-brand d-inline-block mb-4" href="index.html">
+                        <!-- SVG LOGO -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                          <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                          <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                          <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                          <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                          <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                          <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                          <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                          <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                          <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                        </svg>
+                    </a>
+                    <p class="text-white-50 mb-4">Location-based Virtual Reality Arcade center featuring next-gen motion pods, full haptics, and competitive esports leagues.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Explore</h5>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="events.html" class="footer-link">Events</a>
+                </div>
+                <div class="col-lg-2 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Resources</h5>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                    <a href="dashboard.html" class="footer-link">Dashboard</a>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-white-50 small mb-3">Subscribe for tournament updates and deals.</p>
+                    <div class="input-group mb-3 justify-content-center justify-content-md-start">
+                        <input type="email" class="form-control bg-transparent text-white border-secondary shadow-none" placeholder="Email Address">
+                        <button class="btn btn-premium" type="button">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center text-white-50 small">
+                <p class="mb-0">&copy; 2026 VR Nexus Arena. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

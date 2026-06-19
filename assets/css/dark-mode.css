@@ -1,0 +1,111 @@
+body.dark-mode {
+  --theme-bg: var(--dark-bg);
+  --theme-text: #F8FAFC;
+  --theme-card: rgba(255, 255, 255, 0.03);
+  --theme-border: rgba(255, 255, 255, 0.08);
+  --text-muted-color: #94A3B8;
+}
+
+/* Specific elements for dark mode */
+body.dark-mode .navbar-custom {
+  background: rgba(8, 11, 20, 0.8) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .logo-text-primary {
+  fill: #FFFFFF !important;
+}
+
+body.dark-mode .bg-light {
+  background-color: var(--dark-bg) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode section,
+body.dark-mode header.position-relative,
+body.dark-mode .section-padding,
+body.dark-mode .bg-light,
+body.dark-mode .bg-dark {
+  background: var(--dark-bg) !important;
+}
+
+body.dark-mode .text-dark {
+  color: #F8FAFC !important;
+}
+
+body.dark-mode .form-control {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: var(--secondary-color) !important;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2) !important;
+}
+
+body.dark-mode .glass-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .glass-card:hover {
+  box-shadow: 0 15px 35px rgba(109, 40, 255, 0.2) !important;
+}
+
+body.dark-mode .text-muted {
+  color: #94A3B8 !important;
+}
+
+body.dark-mode .offcanvas {
+  background-color: var(--dark-bg) !important;
+  color: #fff !important;
+}
+
+body.dark-mode .offcanvas-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Offcanvas nav links — must override .nav-link's color variable */
+body.dark-mode .offcanvas .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+body.dark-mode .offcanvas .nav-link:hover,
+body.dark-mode .offcanvas .nav-link.active {
+  color: var(--secondary-color) !important;
+}
+
+/* Light mode offcanvas nav links */
+body:not(.dark-mode) .offcanvas .nav-link {
+  color: #1E293B !important;
+}
+body:not(.dark-mode) .offcanvas .nav-link:hover,
+body:not(.dark-mode) .offcanvas .nav-link.active {
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .btn-close {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+
+body.dark-mode .sidebar-nav-link {
+  color: rgba(255,255,255,0.6) !important;
+}
+
+body.dark-mode .sidebar-nav-link.active,
+body.dark-mode .sidebar-nav-link:hover {
+  background: rgba(109, 40, 255, 0.15) !important;
+  color: var(--secondary-color) !important;
+  border-left-color: var(--secondary-color) !important;
+}
+
+body.dark-mode .table {
+  --bs-table-bg: transparent !important;
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.02) !important;
+  color: #fff !important;
+}
+
+body.dark-mode .table th, body.dark-mode .table td {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}

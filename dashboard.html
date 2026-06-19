@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Nexus Arena | Customer Dashboard</title>
+    <meta name="description" content="Manage your active VR session bookings, VIP membership details, and order receipts.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    
+    <style>
+        body.dashboard-page {
+            min-height: 100vh;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(109, 40, 255, 0.18), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(0, 229, 255, 0.12), transparent 28%),
+                var(--theme-bg);
+        }
+
+        .dashboard-shell {
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+        }
+
+        .dashboard-sidebar {
+            width: clamp(16.5rem, 18vw, 19.5rem);
+            min-height: 100vh;
+            padding: 1.25rem;
+            border-right: 1px solid var(--theme-border);
+            background: rgba(8, 11, 20, 0.82);
+            backdrop-filter: blur(18px);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        body:not(.dark-mode) .dashboard-sidebar {
+            background: rgba(248, 250, 252, 0.92);
+        }
+
+        .dashboard-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+            color: var(--theme-text);
+            margin-bottom: 1.25rem;
+        }
+
+        .dashboard-brand-mark {
+            width: 3rem;
+            height: 3rem;
+            flex: 0 0 3rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: #fff;
+            box-shadow: 0 12px 28px rgba(109, 40, 255, 0.25);
+        }
+
+        .dashboard-brand-copy {
+            line-height: 1.05;
+        }
+
+        .dashboard-brand-copy strong {
+            display: block;
+            font-family: var(--font-heading);
+            letter-spacing: 0.05em;
+        }
+
+        .dashboard-brand-copy span {
+            display: block;
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+        }
+
+        .sidebar-profile {
+            border-radius: 1.25rem;
+            padding: 1rem;
+            background: var(--theme-card);
+            border: 1px solid var(--theme-border);
+            margin-bottom: 1rem;
+        }
+
+        .profile-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 0.85rem;
+            box-shadow: 0 12px 24px rgba(0, 229, 255, 0.14);
+        }
+
+        .sidebar-profile h5 {
+            margin-bottom: 0.25rem;
+            font-family: var(--font-heading);
+        }
+
+        .sidebar-profile p {
+            margin-bottom: 0;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            min-width: 0;
+        }
+
+        .sidebar-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 0.95rem;
+            text-decoration: none;
+            color: var(--theme-text);
+            border: 1px solid transparent;
+            transition: var(--transition-smooth);
+            font-family: var(--font-alt);
+            font-weight: 500;
+        }
+
+        .sidebar-nav-link i {
+            width: 1.15rem;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .sidebar-nav-link:hover,
+        .sidebar-nav-link.active {
+            background: linear-gradient(135deg, rgba(109, 40, 255, 0.18), rgba(0, 229, 255, 0.12));
+            color: var(--secondary-color);
+            border-color: rgba(0, 229, 255, 0.18);
+            box-shadow: 0 10px 24px rgba(109, 40, 255, 0.12);
+        }
+
+        body:not(.dark-mode) .sidebar-nav-link {
+            color: var(--text-dark-muted);
+        }
+
+        body:not(.dark-mode) .sidebar-nav-link:hover,
+        body:not(.dark-mode) .sidebar-nav-link.active {
+            color: var(--primary-color);
+            background: rgba(109, 40, 255, 0.08);
+            border-color: rgba(109, 40, 255, 0.14);
+        }
+
+        .sidebar-divider {
+            height: 1px;
+            width: 100%;
+            background: var(--theme-border);
+            margin: 1rem 0;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+        }
+
+        .logout-link {
+            justify-content: center;
+            color: #fff !important;
+            background: linear-gradient(135deg, rgba(255, 77, 141, 0.9), rgba(109, 40, 255, 0.9)) !important;
+        }
+
+        .logout-link:hover {
+            color: #fff !important;
+            background: linear-gradient(135deg, rgba(255, 77, 141, 1), rgba(109, 40, 255, 1)) !important;
+            border-color: transparent !important;
+            box-shadow: 0 10px 24px rgba(255, 77, 141, 0.35) !important;
+        }
+
+        .dashboard-main {
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-topbar {
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            padding: 1rem clamp(1rem, 2vw, 1.5rem);
+            background: rgba(248, 250, 252, 0.82);
+            border-bottom: 1px solid var(--theme-border);
+            backdrop-filter: blur(18px);
+        }
+
+        body.dark-mode .dashboard-topbar {
+            background: rgba(8, 11, 20, 0.78);
+        }
+
+        .dashboard-title-block {
+            min-width: 0;
+        }
+
+        .dashboard-kicker {
+            margin-bottom: 0.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.72rem;
+            color: var(--text-muted-color);
+        }
+
+        .dashboard-page-title {
+            margin-bottom: 0;
+            font-family: var(--font-heading);
+            font-size: clamp(1.1rem, 1vw + 0.8rem, 1.65rem);
+        }
+
+        .topbar-action,
+        .profile-chip {
+            min-height: 2.75rem;
+            border-radius: 999px;
+            border: 1px solid var(--theme-border);
+            background: var(--theme-card);
+            color: var(--theme-text);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.55rem 0.9rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .topbar-action:hover,
+        .profile-chip:hover {
+            transform: translateY(-1px);
+            border-color: var(--secondary-color);
+            color: var(--theme-text);
+        }
+
+        .profile-chip {
+            padding-right: 1rem;
+        }
+
+        .chip-avatar {
+            width: 1.9rem;
+            height: 1.9rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+        }
+
+        .dashboard-scroll {
+            flex: 1 1 auto;
+            min-width: 0;
+            overflow: visible;
+        }
+
+        .dashboard-content {
+            padding: clamp(1rem, 2vw, 1.5rem);
+        }
+
+        .dashboard-section {
+            margin-bottom: 1.5rem;
+            scroll-margin-top: 6rem;
+        }
+
+        .section-heading {
+            margin-bottom: 1rem;
+        }
+
+        .section-heading .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.72rem;
+            color: var(--text-muted-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 0;
+            font-family: var(--font-heading);
+            font-size: clamp(1.2rem, 1vw + 0.95rem, 1.9rem);
+        }
+
+        .dashboard-card {
+            border-radius: 1.5rem;
+            border: 1px solid var(--theme-border);
+            background: var(--theme-card);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .metric-card {
+            padding: 1.25rem;
+            height: 100%;
+        }
+
+        .metric-label {
+            margin-bottom: 0.4rem;
+            color: var(--text-muted-color);
+            font-family: var(--font-alt);
+        }
+
+        .metric-value {
+            margin-bottom: 0;
+            font-family: var(--font-heading);
+            font-size: clamp(1.7rem, 1.7vw + 1rem, 2.6rem);
+        }
+
+        .detail-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .detail-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.8rem 0.95rem;
+            border-radius: 0.95rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        body:not(.dark-mode) .detail-list li {
+            background: rgba(15, 23, 42, 0.03);
+            border-color: rgba(15, 23, 42, 0.06);
+        }
+
+        .dashboard-section .table-responsive {
+            border-radius: 1rem;
+        }
+
+        .dashboard-section .table-responsive th,
+        .dashboard-section .table-responsive td {
+            white-space: nowrap;
+        }
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.95rem 1rem;
+            border-radius: 1rem;
+            border: 1px solid var(--theme-border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--theme-text);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .quick-action:hover {
+            color: var(--theme-text);
+            border-color: rgba(0, 229, 255, 0.28);
+            transform: translateY(-2px);
+        }
+
+        .progress-soft {
+            height: 0.8rem;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .dashboard-offcanvas {
+            background: var(--theme-bg);
+            width: min(88vw, 20rem);
+            max-width: 100vw;
+        }
+
+        body:not(.dark-mode) .dashboard-offcanvas .btn-close {
+            filter: none !important;
+        }
+
+        .dashboard-offcanvas .offcanvas-header {
+            border-bottom: 1px solid var(--theme-border);
+        }
+
+        .dashboard-offcanvas .offcanvas-body {
+            padding: 1rem;
+        }
+
+        @media (max-width: 1199.98px) {
+            body.dashboard-page {
+                overflow: auto;
+            }
+
+            .dashboard-shell {
+                min-height: 100vh;
+                display: block;
+            }
+
+            .dashboard-main {
+                height: auto;
+                overflow: visible;
+            }
+
+            .dashboard-topbar {
+                position: sticky;
+            }
+
+            .section-heading {
+                text-align: center !important;
+            }
+            
+            .section-heading.d-flex {
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
+            }
+            
+            .section-heading.d-flex > div {
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .dashboard-topbar > .d-flex {
+                flex-wrap: wrap;
+            }
+
+            .dashboard-title-block {
+                flex: 1 1 calc(100% - 3rem);
+            }
+
+            .dashboard-topbar .ms-auto {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .dashboard-topbar {
+                padding-inline: 0.9rem;
+            }
+
+            .dashboard-content {
+                padding: 0.9rem;
+            }
+
+            .profile-chip span:not(.chip-avatar) {
+                display: none;
+            }
+
+            .topbar-action,
+            .profile-chip {
+                min-height: 2.1rem !important;
+                padding: 0.3rem 0.6rem !important;
+                font-size: 0.8rem !important;
+            }
+
+            .chip-avatar {
+                width: 1.4rem !important;
+                height: 1.4rem !important;
+                font-size: 0.7rem !important;
+            }
+        }
+
+        body:not(.dark-mode) #membership-summary {
+            background: linear-gradient(135deg, rgba(8, 11, 20, 0.95), rgba(255, 215, 0, 0.06)) !important;
+            border-color: rgba(255, 215, 0, 0.35) !important;
+        }
+
+        body:not(.dark-mode) #membership-summary .text-white {
+            color: #F8FAFC !important;
+        }
+
+        body:not(.dark-mode) #membership-summary .text-white-50 {
+            color: rgba(248, 250, 252, 0.72) !important;
+        }
+
+        @media (max-width: 575.98px) {
+            .mobile-full-width {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080B14'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Cpath d='M18 26h28a2 2 0 0 1 2 2v6a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-6a2 2 0 0 1 2-2z' fill='%236D28FF'/%3E%3C/svg%3E">
+</head>
+<body class="dark-mode dashboard-page">
+    <script>
+        // Sync theme and direction immediately on load to prevent rendering flash
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+            const dir = localStorage.getItem('dir') || 'ltr';
+            document.documentElement.setAttribute('dir', dir);
+        })();
+    </script>
+    <div class="dashboard-shell">
+        <aside class="dashboard-sidebar d-none d-xl-flex">
+            <a class="dashboard-brand" href="index.html">
+                <!-- SVG LOGO -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                  <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                  <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                  <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                  <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                  <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                  <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                  <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                  <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                  <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                </svg>
+            </a>
+
+            <nav class="sidebar-nav" aria-label="Dashboard navigation">
+                <a class="sidebar-nav-link active" href="#overview" data-dashboard-link="overview" data-section-label="Overview"><i class="fa-solid fa-chart-line"></i><span>Overview</span></a>
+                <a class="sidebar-nav-link" href="#bookings" data-dashboard-link="bookings" data-section-label="Bookings"><i class="fa-solid fa-calendar-check"></i><span>Bookings</span></a>
+                <a class="sidebar-nav-link" href="#membership" data-dashboard-link="membership" data-section-label="Membership"><i class="fa-solid fa-id-card"></i><span>Membership</span></a>
+                <a class="sidebar-nav-link" href="#experiences" data-dashboard-link="experiences" data-section-label="Experiences"><i class="fa-solid fa-gamepad"></i><span>Experiences</span></a>
+                <a class="sidebar-nav-link" href="#rewards" data-dashboard-link="rewards" data-section-label="Rewards"><i class="fa-solid fa-gift"></i><span>Rewards</span></a>
+                <a class="sidebar-nav-link" href="#support" data-dashboard-link="support" data-section-label="Support"><i class="fa-solid fa-headset"></i><span>Support</span></a>
+                <a class="sidebar-nav-link" href="#settings" data-dashboard-link="settings" data-section-label="Settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-divider"></div>
+                <a class="sidebar-nav-link logout-link" href="login.html"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+            </div>
+        </aside>
+
+        <div class="dashboard-main">
+            <header class="dashboard-topbar">
+                <div class="d-flex align-items-center gap-3 flex-nowrap">
+                    <button class="btn topbar-action d-xl-none px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#dashboardNavMobile" aria-controls="dashboardNavMobile" aria-label="Open dashboard menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div class="dashboard-title-block">
+                        <h1 class="dashboard-page-title">Overview</h1>
+                    </div>
+
+                    <div class="ms-auto d-flex align-items-center gap-2 gap-md-3 flex-nowrap">
+                        <a href="#" id="rtl-toggle" class="topbar-action px-3" aria-label="Toggle RTL">RTL</a>
+                        <a href="#" id="theme-toggle" class="topbar-action px-3" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></a>
+
+                        <div class="dropdown">
+                            <button class="profile-chip dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="chip-avatar">JD</span>
+                                <span>John Doe</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">John Doe</h6></li>
+                                <li><a class="dropdown-item" href="#membership">Membership</a></li>
+                                <li><a class="dropdown-item" href="#settings">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <div class="container-fluid px-0">
+                    <section id="overview" class="dashboard-section" data-dashboard-section>
+                        <div class="section-heading d-flex flex-wrap align-items-end justify-content-between gap-2">
+                            <div>
+                                <p class="eyebrow">Overview</p>
+                                <h2>Welcome back, John!</h2>
+                            </div>
+                            <p class="text-white-50 small mb-0">Live snapshot of activity, bookings, and membership.</p>
+                        </div>
+
+                        <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-center">
+                            <div class="col">
+                                <div class="dashboard-card metric-card">
+                                    <p class="metric-label">Total Play Hours</p>
+                                    <h3 class="metric-value text-white">18.5 hrs</h3>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dashboard-card metric-card">
+                                    <p class="metric-label">Upcoming Bookings</p>
+                                    <h3 class="metric-value text-white">1 Session</h3>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dashboard-card metric-card">
+                                    <p class="metric-label">Loyalty Points</p>
+                                    <h3 class="metric-value text-white">2,450 pts</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-4 mt-0 justify-content-center">
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="dashboard-card p-4 h-100">
+                                    <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+                                        <p class="metric-label mb-0">Next Scheduled Experience</p>
+                                        <span class="badge bg-success flex-shrink-0">Confirmed</span>
+                                    </div>
+                                    <h4 class="text-white mb-2" style="font-family: var(--font-heading);">Zombie Survival (Station Alpha)</h4>
+                                    <p class="text-white-50 small mb-0"><i class="fa-regular fa-clock me-1"></i> June 25, 2026 at 12:00 PM | 2 Players</p>
+                                    <div class="d-flex flex-column flex-sm-row gap-2">
+                                        <button class="btn btn-premium btn-sm mobile-full-width" data-bs-toggle="modal" data-bs-target="#qrModal">View Ticket QR</button>
+                                        <a href="#bookings" class="btn btn-outline-premium btn-sm mobile-full-width">See Bookings</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Booking Status</p>
+                                    <ul class="detail-list">
+                                        <li><span><i class="fa-solid fa-circle-check text-success me-2"></i> Confirmed</span><strong>1</strong></li>
+                                        <li><span><i class="fa-solid fa-circle-xmark text-warning me-2"></i> Pending</span><strong>0</strong></li>
+                                        <li><span><i class="fa-solid fa-clock text-info me-2"></i> Completed</span><strong>2</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Quick Actions</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="experiences.html" class="quick-action"><span>Book New Session</span><i class="fa-solid fa-arrow-right"></i></a>
+                                        <a href="#support" class="quick-action"><span>Open Support</span><i class="fa-solid fa-headset"></i></a>
+                                        <a href="#settings" class="quick-action"><span>Dashboard Settings</span><i class="fa-solid fa-gear"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-4 mt-0">
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Recent Activity</p>
+                                    <div class="d-grid gap-3">
+                                        <div class="d-flex align-items-start gap-3">
+                                            <span class="chip-avatar flex-shrink-0">01</span>
+                                            <div>
+                                                <h6 class="text-white mb-1">Booking confirmed</h6>
+                                                <p class="text-white-50 small mb-0">Zombie Survival reserved for June 25, 2026.</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-start gap-3">
+                                            <span class="chip-avatar flex-shrink-0">02</span>
+                                            <div>
+                                                <h6 class="text-white mb-1">Points updated</h6>
+                                                <p class="text-white-50 small mb-0">You earned bonus loyalty points for your last visit.</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-start gap-3">
+                                            <span class="chip-avatar flex-shrink-0">03</span>
+                                            <div>
+                                                <h6 class="text-white mb-1">Membership renewed</h6>
+                                                <p class="text-white-50 small mb-0">Gold VIP tier remains active through July 2026.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-lg-6">
+                                <div class="dashboard-card p-4 h-100" id="membership-summary">
+                                    <p class="metric-label">Membership Information</p>
+                                    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+                                        <div>
+                                            <h4 class="text-warning mb-1" style="font-family: var(--font-heading);">Gold VIP Tier</h4>
+                                            <p class="text-white-50 small mb-0">Active member since Jan 2026</p>
+                                        </div>
+                                        <i class="fa-solid fa-crown fs-2 text-warning"></i>
+                                    </div>
+                                    <h3 class="text-white mb-2" style="font-family: var(--font-heading);">$79 <span class="fs-6 text-white-50">/month</span></h3>
+                                    <p class="text-white-50 small mb-3">Next billing date: July 01, 2026</p>
+                                    <div class="progress progress-soft mb-3">
+                                        <div class="progress-bar bg-warning" style="width: 68%"></div>
+                                    </div>
+                                    <ul class="detail-list">
+                                        <li><span>Free game hours</span><strong>2 / month</strong></li>
+                                        <li><span>Extra hours discount</span><strong>20%</strong></li>
+                                        <li><span>Priority queue</span><strong>Enabled</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="bookings" class="dashboard-section" data-dashboard-section>
+                        <div class="section-heading">
+                            <p class="eyebrow">Bookings</p>
+                            <h2>Booking History</h2>
+                        </div>
+                        <div class="dashboard-card p-4">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+                                <p class="text-white-50 small mb-0">Recent reservations and visit history.</p>
+                                <a href="experiences.html" class="btn btn-premium btn-sm">Book New Session</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover align-middle border-secondary mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Experience</th>
+                                            <th scope="col">Date & Time</th>
+                                            <th scope="col">Players</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>VRN-8942-X</td>
+                                            <td>Zombie Survival</td>
+                                            <td>June 25, 2026 - 12:00 PM</td>
+                                            <td>2 Players</td>
+                                            <td>$90.00</td>
+                                            <td><span class="badge bg-success">Upcoming</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>VRN-3120-A</td>
+                                            <td>Racing Simulator</td>
+                                            <td>May 14, 2026 - 04:30 PM</td>
+                                            <td>1 Player</td>
+                                            <td>$30.00</td>
+                                            <td><span class="badge bg-secondary">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>VRN-1054-C</td>
+                                            <td>Space Exploration</td>
+                                            <td>April 02, 2026 - 02:00 PM</td>
+                                            <td>4 Players</td>
+                                            <td>$180.00</td>
+                                            <td><span class="badge bg-secondary">Completed</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="membership" class="dashboard-section" data-dashboard-section>
+                        <div class="section-heading">
+                            <p class="eyebrow">Membership</p>
+                            <h2>VIP Membership Status</h2>
+                        </div>
+                        <div class="dashboard-card p-4">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <div id="membership-summary" class="p-4 rounded-4 border border-warning" style="background: linear-gradient(135deg, rgba(8,11,20,0.95), rgba(255,215,0,0.06)) !important;">
+                                        <div class="d-flex justify-content-between align-items-start mb-3">
+                                            <div>
+                                                <h5 class="text-warning mb-1">Gold VIP Tier</h5>
+                                                <span class="text-white-50 small">Active Member since Jan 2026</span>
+                                            </div>
+                                            <i class="fa-solid fa-crown fs-2 text-warning"></i>
+                                        </div>
+                                        <h3 class="text-white mb-3" style="font-family: var(--font-heading);">$79<span class="fs-6 text-white-50">/month</span></h3>
+                                        <p class="text-white-50 small mb-0">Next billing date: July 01, 2026</p>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-6">
+                                    <h5 class="text-white mb-3">Your Tier Perks</h5>
+                                    <ul class="list-unstyled text-white-50 small mb-4">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-warning me-2"></i> 2 Free game hours per month</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-warning me-2"></i> 20% Discount on extra hours</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-warning me-2"></i> Priority waiting queue</li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-warning me-2"></i> Early tournament registration access</li>
+                                    </ul>
+                                    <a href="#settings" class="btn btn-outline-premium btn-sm">Manage Membership Settings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="experiences" class="dashboard-section" data-dashboard-section>
+                        <div class="section-heading">
+                            <p class="eyebrow">Experiences</p>
+                            <h2>Upcoming and Popular Sessions</h2>
+                        </div>
+                        <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-xl-3 justify-content-center">
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Station Alpha</p>
+                                    <h5 class="text-white mb-2">Zombie Survival</h5>
+                                    <p class="text-white-50 small mb-3">Co-op survival mission for 2 players.</p>
+                                    <button class="btn btn-outline-premium btn-sm w-100">Open Session</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Racing Arena</p>
+                                    <h5 class="text-white mb-2">Simulator Challenge</h5>
+                                    <p class="text-white-50 small mb-3">Competitive laps with full motion feedback.</p>
+                                    <button class="btn btn-outline-premium btn-sm w-100">Open Session</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Space Deck</p>
+                                    <h5 class="text-white mb-2">Exploration Mission</h5>
+                                    <p class="text-white-50 small mb-3">Group adventure designed for 4 players.</p>
+                                    <button class="btn btn-outline-premium btn-sm w-100">Open Session</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="rewards" class="dashboard-section" data-dashboard-section>
+                        <div class="section-heading">
+                            <p class="eyebrow">Rewards</p>
+                            <h2>Loyalty Progress</h2>
+                        </div>
+                        <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-xl-3 justify-content-center">
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Loyalty Points</p>
+                                    <h3 class="metric-value text-white">2,450</h3>
+                                    <p class="text-white-50 small mb-0">Reach 3,000 points for your next reward tier.</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Next Reward</p>
+                                    <h5 class="text-white mb-3">Free Session Upgrade</h5>
+                                    <div class="progress progress-soft mb-2">
+                                        <div class="progress-bar bg-info" style="width: 82%"></div>
+                                    </div>
+                                    <p class="text-white-50 small mb-0">820 points remaining.</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Reward Options</p>
+                                    <ul class="detail-list">
+                                        <li><span>Free drink voucher</span><strong>250 pts</strong></li>
+                                        <li><span>Session discount</span><strong>500 pts</strong></li>
+                                        <li><span>VIP guest pass</span><strong>1,000 pts</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="support" class="dashboard-section" data-dashboard-section>
+                        <div class="section-heading">
+                            <p class="eyebrow">Support</p>
+                            <h2>Help & Support</h2>
+                        </div>
+                        <div class="dashboard-card p-4">
+                            <form id="supportTicketForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label text-white-50 small">Subject</label>
+                                        <input type="text" class="form-control bg-transparent text-white border-secondary shadow-none" placeholder="Booking rescheduling, point errors..." required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-white-50 small">Related Booking ID (Optional)</label>
+                                        <input type="text" class="form-control bg-transparent text-white border-secondary shadow-none" placeholder="VRN-XXXX-X">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label text-white-50 small">Message Description</label>
+                                        <textarea class="form-control bg-transparent text-white border-secondary shadow-none" rows="4" placeholder="Explain your support inquiry in detail..." required></textarea>
+                                    </div>
+                                    <div class="col-12 text-end">
+                                        <button type="submit" class="btn btn-premium px-4">Submit Ticket</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section id="settings" class="dashboard-section" data-dashboard-section>
+                        <div class="section-heading">
+                            <p class="eyebrow">Settings</p>
+                            <h2>Preferences</h2>
+                        </div>
+                        <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-xl-3 justify-content-center">
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Theme</p>
+                                    <p class="text-white-50 small mb-3">Use the top bar button to switch appearance.</p>
+                                    <a href="#" id="theme-toggle-settings" class="btn btn-outline-premium btn-sm w-100">Toggle Theme</a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">RTL</p>
+                                    <p class="text-white-50 small mb-3">Switch layout direction from the top bar control.</p>
+                                    <a href="#" id="rtl-toggle-settings" class="btn btn-outline-premium btn-sm w-100">Toggle RTL</a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dashboard-card p-4 h-100">
+                                    <p class="metric-label">Notifications</p>
+                                    <ul class="detail-list">
+                                        <li><span>Email receipts</span><strong>On</strong></li>
+                                        <li><span>Booking alerts</span><strong>On</strong></li>
+                                        <li><span>Reward reminders</span><strong>On</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start dashboard-offcanvas d-xl-none" tabindex="-1" id="dashboardNavMobile" aria-labelledby="dashboardNavMobileLabel">
+        <div class="offcanvas-header">
+            <a class="dashboard-brand mb-0" href="index.html" id="dashboardNavMobileLabel">
+                <!-- SVG LOGO -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                  <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                  <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                  <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                  <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                  <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                  <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                  <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                  <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                  <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                </svg>
+            </a>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="sidebar-nav" aria-label="Mobile dashboard navigation">
+                <a class="sidebar-nav-link active" href="#overview" data-dashboard-link="overview" data-section-label="Overview" data-bs-dismiss="offcanvas"><i class="fa-solid fa-chart-line"></i><span>Overview</span></a>
+                <a class="sidebar-nav-link" href="#bookings" data-dashboard-link="bookings" data-section-label="Bookings" data-bs-dismiss="offcanvas"><i class="fa-solid fa-calendar-check"></i><span>Bookings</span></a>
+                <a class="sidebar-nav-link" href="#membership" data-dashboard-link="membership" data-section-label="Membership" data-bs-dismiss="offcanvas"><i class="fa-solid fa-id-card"></i><span>Membership</span></a>
+                <a class="sidebar-nav-link" href="#experiences" data-dashboard-link="experiences" data-section-label="Experiences" data-bs-dismiss="offcanvas"><i class="fa-solid fa-gamepad"></i><span>Experiences</span></a>
+                <a class="sidebar-nav-link" href="#rewards" data-dashboard-link="rewards" data-section-label="Rewards" data-bs-dismiss="offcanvas"><i class="fa-solid fa-gift"></i><span>Rewards</span></a>
+                <a class="sidebar-nav-link" href="#support" data-dashboard-link="support" data-section-label="Support" data-bs-dismiss="offcanvas"><i class="fa-solid fa-headset"></i><span>Support</span></a>
+                <a class="sidebar-nav-link" href="#settings" data-dashboard-link="settings" data-section-label="Settings" data-bs-dismiss="offcanvas"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-divider"></div>
+                <a class="sidebar-nav-link logout-link" href="login.html"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ticket QR Modal -->
+    <div class="modal fade" id="qrModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content glass-card p-4 text-center" style="background: var(--dark-bg) !important; border: 1px solid var(--primary-color) !important;">
+                <div class="modal-header border-0 p-0 mb-3 justify-content-end">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <h5 class="text-white mb-3">Your Session Pass</h5>
+                    <div class="bg-white p-3 d-inline-block rounded mb-3" style="box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 29 29">
+                            <path d="M0 0h9v9H0zm1 1v7h7V1zm1 1v5h5V2zm7 7h1v1h-1zm-7 1h1v1H0zm1 0h7v1H1zm7 0h1v1h-1zm-7 1h1v1H1zm1 0h2v1H2zm3 0h2v1H5zm2 0h1v1H7zm1 0h1v1h-1zm-8 1h1v1H0zm2 0h2v1H2zm3 0h1v1H5zm3 0h1v1h-1z" fill="#000"/>
+                        </svg>
+                    </div>
+                    <p class="text-info fw-bold mb-0" style="font-family: var(--font-heading);">VRN-8942-X</p>
+                    <p class="text-white-50 small mb-0">Show this code at check-in counter.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const observerRoot = window.matchMedia('(min-width: 992px)').matches ? document.querySelector('.dashboard-main') : null;
+            const links = Array.from(document.querySelectorAll('[data-dashboard-link]'));
+            const sections = Array.from(document.querySelectorAll('[data-dashboard-section]'));
+            const pageTitle = document.querySelector('.dashboard-page-title');
+            const themeToggle = document.getElementById('theme-toggle');
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const themeToggleSettings = document.getElementById('theme-toggle-settings');
+            const rtlToggleSettings = document.getElementById('rtl-toggle-settings');
+
+            function setActiveSection(sectionId) {
+                const activeLink = links.find((link) => link.dataset.dashboardLink === sectionId);
+
+                links.forEach((link) => {
+                    link.classList.toggle('active', link.dataset.dashboardLink === sectionId);
+                });
+
+                if (activeLink && pageTitle) {
+                    pageTitle.textContent = activeLink.dataset.sectionLabel || activeLink.textContent.trim();
+                }
+            }
+
+            links.forEach((link) => {
+                link.addEventListener('click', function (event) {
+                const sectionId = this.dataset.dashboardLink;
+                const target = document.getElementById(sectionId);
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setActiveSection(sectionId);
+
+                    const offcanvasElement = this.closest('.offcanvas');
+                    if (offcanvasElement && window.bootstrap) {
+                        const instance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                        if (instance) {
+                            instance.hide();
+                        }
+                    }
+                });
+            });
+
+            if (sections.length && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    const visible = entries
+                        .filter((entry) => entry.isIntersecting)
+                        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+                    if (visible) {
+                        setActiveSection(visible.target.id);
+                    }
+                }, {
+                    root: observerRoot,
+                    threshold: [0.35, 0.5, 0.65],
+                });
+
+                sections.forEach((section) => observer.observe(section));
+            }
+
+            if (themeToggleSettings && themeToggle) {
+                themeToggleSettings.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    themeToggle.click();
+                });
+            }
+
+            if (rtlToggleSettings && rtlToggle) {
+                rtlToggleSettings.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    rtlToggle.click();
+                });
+            }
+
+            setActiveSection('overview');
+        });
+    </script>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

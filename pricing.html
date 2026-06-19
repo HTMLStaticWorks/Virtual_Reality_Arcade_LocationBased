@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Nexus Arena | Pricing & Booking Packages</title>
+    <meta name="description" content="View session rates, squad discounts, membership plans, and corporate packages for VR Nexus Arena.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    
+    <style>
+        .pricing-card {
+            border: 1px solid var(--theme-border);
+            border-radius: 24px;
+            background: var(--theme-card);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+        }
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, rgba(109, 40, 255, 0.05), rgba(8, 11, 20, 0.95)) !important;
+            box-shadow: 0 10px 30px rgba(109, 40, 255, 0.2);
+            position: relative;
+            padding-top: 3.5rem !important;
+        }
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: #fff;
+            display: inline-block;
+            width: max-content;
+            padding: 0.18rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.58rem;
+            font-family: var(--font-alt);
+            font-weight: 700;
+            line-height: 1;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+        body:not(.dark-mode) .pricing-card.featured,
+        body:not(.dark-mode) .pricing-card.featured .text-white,
+        body:not(.dark-mode) .pricing-card.featured .text-white-50,
+        body:not(.dark-mode) .pricing-card.featured p,
+        body:not(.dark-mode) .pricing-card.featured li {
+            color: #fff !important;
+        }
+        .table-wrap {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--theme-border);
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080B14'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Cpath d='M18 26h28a2 2 0 0 1 2 2v6a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-6a2 2 0 0 1 2-2z' fill='%236D28FF'/%3E%3C/svg%3E">
+</head>
+<body class="dark-mode">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl fixed-top navbar-custom py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <!-- SVG LOGO -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                  <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                  <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                  <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                  <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                  <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                  <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                  <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                  <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                  <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                </svg>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <i class="fa-solid fa-bars fs-3"></i>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header justify-content-between border-bottom border-secondary">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <!-- SVG LOGO -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                          <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                          <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                          <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                          <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                          <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                          <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                          <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                          <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                          <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                        </svg>
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto align-items-xl-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home 1</a></li>
+                        <li class="nav-item"><a class="nav-link" href="home2.html">Home 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                        <li class="nav-item ms-xl-3 my-2 my-xl-0">
+                            <a href="login.html" class="btn btn-premium btn-sm w-100">Login</a>
+                        </li>
+
+                        <li class="nav-item ms-xl-3 d-flex gap-2 mt-3 mt-xl-0 align-items-center justify-content-center">
+                            <a href="#" id="rtl-toggle" class="topbar-action px-3" aria-label="Toggle RTL">RTL</a>
+                            <a href="#" id="theme-toggle" class="topbar-action px-3" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="position-relative d-flex align-items-center justify-content-center" style="height: 50vh; background: var(--dark-bg); margin-top: 76px;">
+        <div class="hero-overlay" style="background: radial-gradient(circle, rgba(109,40,255,0.15) 0%, rgba(8,11,20,0.95) 100%);"></div>
+        <div class="container position-relative z-2 text-center text-white fade-up">
+            <h1 class="hero-title mb-3" style="font-size: clamp(3rem, 6vw, 4.5rem);">Pricing Grid</h1>
+            <p class="lead text-white-50">Select standard hours, buy multiplayer passes, or book custom corporate events.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="section-padding bg-light">
+        <div class="container text-start">
+            
+            <!-- Cards Grid -->
+            <div class="row g-4 mb-5 justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-3 fade-up">
+                    <div class="pricing-card p-4">
+                        <h4 class="text-white mb-3">Quick Play</h4>
+                        <p class="text-muted small mb-4">Perfect for trying out hardware presets or a single quick race.</p>
+                        <h2 class="text-white mb-4" style="font-family: var(--font-heading);">$25<span class="fs-6 text-white-50"> / 30 mins</span></h2>
+                        <ul class="list-unstyled text-white-50 small mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Access to 1 VR station</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Standard catalog games</li>
+                            <li class="mb-2"><i class="fa-solid fa-xmark text-danger me-2"></i> Haptic vest integration</li>
+                            <li class="mb-2"><i class="fa-solid fa-xmark text-danger me-2"></i> Leaderboard entry</li>
+                        </ul>
+                        <button class="btn btn-outline-premium w-100 mt-auto" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Pass</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.1s;">
+                    <div class="pricing-card p-4 featured">
+                        <h4 class="text-white mb-3">Elite Hour</h4>
+                        <p class="text-muted small mb-4">Our most popular ticket for multiplayer co-op battle action.</p>
+                        <h2 class="text-white mb-4" style="font-family: var(--font-heading);">$45<span class="fs-6 text-white-50"> / 60 mins</span></h2>
+                        <ul class="list-unstyled text-white-50 small mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> 1 Full hour of gameplay</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> All experiences catalog</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Haptic vest integration</li>
+                            <li class="mb-2"><i class="fa-solid fa-xmark text-danger me-2"></i> Priority rig queuing</li>
+                        </ul>
+                        <button class="btn btn-premium w-100 mt-auto" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Pass</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.2s;">
+                    <div class="pricing-card p-4">
+                        <h4 class="text-white mb-3">Mega Pass</h4>
+                        <p class="text-muted small mb-4">Recommended for escape rooms and complete simulator campaigns.</p>
+                        <h2 class="text-white mb-4" style="font-family: var(--font-heading);">$60<span class="fs-6 text-white-50"> / 90 mins</span></h2>
+                        <ul class="list-unstyled text-white-50 small mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> 90 minutes game time</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Free station hopping</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Full haptics & tracking</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Save game profile</li>
+                        </ul>
+                        <button class="btn btn-outline-premium w-100 mt-auto" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Pass</button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.3s;">
+                    <div class="pricing-card p-4">
+                        <h4 class="text-white mb-3">Day VIP Pass</h4>
+                        <p class="text-muted small mb-4">Unlimited full-day sandbox play for true virtual gamers.</p>
+                        <h2 class="text-white mb-4" style="font-family: var(--font-heading);">$120<span class="fs-6 text-white-50"> / full day</span></h2>
+                        <ul class="list-unstyled text-white-50 small mb-4 flex-grow-1">
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Unlimited play hours</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Priority station queuing</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> Free snacks & drinks</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i> VIP lounge entry</li>
+                        </ul>
+                        <button class="btn btn-outline-premium w-100 mt-auto" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Pass</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group Packages -->
+            <div class="fade-up pt-5">
+                <h3 class="text-white text-center mb-4">Special Squad Packages</h3>
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 text-center h-100 d-flex flex-column">
+                            <i class="fa-solid fa-people-group fs-2 text-info mb-3"></i>
+                            <h4 class="text-white mb-2" style="min-height: 56px;">Family Squad</h4>
+                            <p class="text-muted small mb-3" style="min-height: 72px;">4 players sharing a connected pod area for multiplayer cooperations.</p>
+                            <h5 class="text-white mb-3">$140 / hour</h5>
+                            <button class="btn btn-outline-premium btn-sm mt-auto" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Family</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 text-center h-100 d-flex flex-column">
+                            <i class="fa-solid fa-cake-candles fs-2 text-accent mb-3"></i>
+                            <h4 class="text-white mb-2" style="min-height: 56px;">Birthday Party</h4>
+                            <p class="text-muted small mb-3" style="min-height: 72px;">Full arcade station reservations, game master coaches, pizza, and lounge access.</p>
+                            <h5 class="text-white mb-3">Custom Booking</h5>
+                            <a href="contact.html" class="btn btn-outline-premium btn-sm mt-auto">Inquire Party</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 text-center h-100 d-flex flex-column">
+                            <i class="fa-solid fa-building-flag fs-2 text-warning mb-3"></i>
+                            <h4 class="text-white mb-2" style="min-height: 56px;">Corporate Team</h4>
+                            <p class="text-muted small mb-3" style="min-height: 72px;">Private arena booking for multiplayer tournaments, catered food, and scoreboard tracking.</p>
+                            <h5 class="text-white mb-3">Custom Booking</h5>
+                            <a href="contact.html" class="btn btn-outline-premium btn-sm mt-auto">Inquire Corporate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Choose Your Pass -->
+            <div class="fade-up pt-5">
+                <h3 class="text-white text-center mb-4">Choose Your Pass Style</h3>
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-lg-5">
+                        <div class="glass-card h-100 p-4 p-lg-5" style="background: linear-gradient(135deg, rgba(109, 40, 255, 0.16), rgba(0, 229, 255, 0.08)); border-color: rgba(109, 40, 255, 0.25);">
+                            <p class="text-info text-uppercase small fw-bold mb-2">Fast way to decide</p>
+                            <h4 class="text-white mb-3">Pick the session length that matches your energy.</h4>
+                            <p class="text-muted mb-4">Short visits work well for first-timers and quick play. Longer passes are better for teams, full campaigns, and premium gear access.</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge rounded-pill text-bg-dark border border-secondary px-3 py-2">Quick check-in</span>
+                                <span class="badge rounded-pill text-bg-dark border border-secondary px-3 py-2">Upgrade friendly</span>
+                                <span class="badge rounded-pill text-bg-dark border border-secondary px-3 py-2">Group ready</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="glass-card p-4 h-100">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary text-white me-3" style="width: 44px; height: 44px;">
+                                            <i class="fa-solid fa-bolt"></i>
+                                        </span>
+                                        <h5 class="text-white mb-0">Short Sessions</h5>
+                                    </div>
+                                    <p class="text-muted small mb-0">Best for a first visit, a quick hardware test, or a single fast round with friends.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="glass-card p-4 h-100">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-info text-dark me-3" style="width: 44px; height: 44px;">
+                                            <i class="fa-solid fa-gamepad"></i>
+                                        </span>
+                                        <h5 class="text-white mb-0">Balanced Play</h5>
+                                    </div>
+                                    <p class="text-muted small mb-0">Ideal when you want enough time for multiplayer missions, full-map runs, and reset breaks.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="glass-card p-4 h-100">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-warning text-dark me-3" style="width: 44px; height: 44px;">
+                                            <i class="fa-solid fa-trophy"></i>
+                                        </span>
+                                        <h5 class="text-white mb-0">Competitive Runs</h5>
+                                    </div>
+                                    <p class="text-muted small mb-0">Designed for groups chasing scoreboards, replay value, and a premium arena feel.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="glass-card p-4 h-100">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-success text-white me-3" style="width: 44px; height: 44px;">
+                                            <i class="fa-solid fa-crown"></i>
+                                        </span>
+                                        <h5 class="text-white mb-0">All-Day Access</h5>
+                                    </div>
+                                    <p class="text-muted small mb-0">Best for enthusiasts who want full-day freedom, lounge perks, and the highest flexibility.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Experience -->
+            <div class="fade-up pt-5">
+                <h3 class="text-white text-center mb-4">Booking Experience</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 text-center">
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary text-white mb-3" style="width: 54px; height: 54px;">
+                                <i class="fa-solid fa-calendar-check fs-5"></i>
+                            </div>
+                            <h4 class="text-white mb-2">Reserve a Slot</h4>
+                            <p class="text-muted small mb-0">Choose a package, pick your date, and secure your preferred time in a few clicks.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 text-center">
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-info text-dark mb-3" style="width: 54px; height: 54px;">
+                                <i class="fa-solid fa-headset fs-5"></i>
+                            </div>
+                            <h4 class="text-white mb-2">Gear Up</h4>
+                            <p class="text-muted small mb-0">Our team sets up the headset, controllers, and any extra gear before your session starts.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card p-4 h-100 text-center">
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-warning text-dark mb-3" style="width: 54px; height: 54px;">
+                                <i class="fa-solid fa-rocket fs-5"></i>
+                            </div>
+                            <h4 class="text-white mb-2">Jump Into VR</h4>
+                            <p class="text-muted small mb-0">After a quick briefing, you’re in the arena and ready to play without extra setup delays.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Booking Modal (Standardized) -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content glass-card p-4 text-start text-white" style="background: var(--dark-bg) !important;">
+                <!-- Standard modal content -->
+                <div class="modal-header border-bottom border-secondary pb-3">
+                    <h3 class="modal-title" id="bookingModalLabel" style="font-family: var(--font-heading); font-weight: 580; color: white !important;">Book Your VR Session</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="booking-step active text-center flex-fill">
+                            <span class="step-num bg-primary text-white mx-auto mb-2">1</span>
+                            <span class="d-none d-sm-block small text-white-50">Game</span>
+                        </div>
+                        <div class="booking-step text-center flex-fill">
+                            <span class="step-num bg-secondary text-light mx-auto mb-2">2</span>
+                            <span class="d-none d-sm-block small text-white-50">Details</span>
+                        </div>
+                        <div class="booking-step text-center flex-fill">
+                            <span class="step-num bg-secondary text-light mx-auto mb-2">3</span>
+                            <span class="d-none d-sm-block small text-white-50">Time</span>
+                        </div>
+                        <div class="booking-step text-center flex-fill">
+                            <span class="step-num bg-secondary text-light mx-auto mb-2">4</span>
+                            <span class="d-none d-sm-block small text-white-50">Payment</span>
+                        </div>
+                        <div class="booking-step text-center flex-fill">
+                            <span class="step-num bg-secondary text-light mx-auto mb-2">5</span>
+                            <span class="d-none d-sm-block small text-white-50">Receipt</span>
+                        </div>
+                    </div>
+
+                    <form id="bookingForm">
+                        <div class="booking-step-content" id="step-1">
+                            <h5 class="mb-3">Choose Your Virtual Adventure</h5>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="experience-option p-3 d-flex align-items-center gap-3 border border-secondary" data-exp="Zombie Survival">
+                                        <i class="fa-solid fa-skull-crossbones fs-3 text-danger"></i>
+                                        <div>
+                                            <h6 class="mb-0 text-white">Zombie Survival</h6>
+                                            <small class="text-white-50">$45.00 / player</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="experience-option p-3 d-flex align-items-center gap-3 border border-secondary" data-exp="Space Exploration">
+                                        <i class="fa-solid fa-rocket fs-3 text-primary"></i>
+                                        <div>
+                                            <h6 class="mb-0 text-white">Space Exploration</h6>
+                                            <small class="text-white-50">$60.00 / player</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="experience-option p-3 d-flex align-items-center gap-3 border border-secondary" data-exp="Racing Simulator">
+                                        <i class="fa-solid fa-car fs-3 text-warning"></i>
+                                        <div>
+                                            <h6 class="mb-0 text-white">Racing Simulator</h6>
+                                            <small class="text-white-50">$30.00 / player</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="experience-option p-3 d-flex align-items-center gap-3 border border-secondary" data-exp="Multiplayer Battle Arena">
+                                        <i class="fa-solid fa-crosshairs fs-3 text-info"></i>
+                                        <div>
+                                            <h6 class="mb-0 text-white">Battle Arena</h6>
+                                            <small class="text-white-50">$45.00 / player</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end mt-4">
+                                <button type="button" class="btn btn-premium next-step px-4">Next Step <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="booking-step-content d-none" id="step-2">
+                            <h5 class="mb-3">Session Specifications</h5>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label text-white-50 small">Number of Players</label>
+                                    <input type="number" class="form-control" id="bookingParticipants" min="1" max="8" value="1" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label text-white-50 small">Select Station Pod</label>
+                                    <select class="form-select bg-dark text-white border-secondary" id="bookingStation">
+                                        <option value="Station Alpha (Esports Ready)">Station Alpha (Esports Ready)</option>
+                                        <option value="Station Beta (Haptic Flight Pod)">Station Beta (Haptic Flight Pod)</option>
+                                        <option value="Station Gamma (Omni Treadmill)">Station Gamma (Omni Treadmill)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-secondary prev-step px-4"><i class="fa-solid fa-arrow-left me-2"></i> Back</button>
+                                <button type="button" class="btn btn-premium next-step px-4">Next Step <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="booking-step-content d-none" id="step-3">
+                            <h5 class="mb-3">Select Date & Time Slot</h5>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label text-white-50 small">Choose Date</label>
+                                    <input type="date" class="form-control" id="bookingDate" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label text-white-50 small">Select Start Time</label>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="time-slot-btn" data-time="10:00 AM">10:00 AM</span>
+                                        <span class="time-slot-btn" data-time="12:00 PM">12:00 PM</span>
+                                        <span class="time-slot-btn" data-time="02:30 PM">02:30 PM</span>
+                                        <span class="time-slot-btn" data-time="05:00 PM">05:00 PM</span>
+                                        <span class="time-slot-btn" data-time="07:30 PM">07:30 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-secondary prev-step px-4"><i class="fa-solid fa-arrow-left me-2"></i> Back</button>
+                                <button type="button" class="btn btn-premium next-step px-4">Next Step <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="booking-step-content d-none" id="step-4">
+                            <h5 class="mb-3">Complete Checkout</h5>
+                            <div class="row g-3">
+                                <div class="col-md-7">
+                                    <label class="form-label text-white-50 small">Cardholder Name</label>
+                                    <input type="text" class="form-control mb-3" placeholder="John Doe">
+                                    <label class="form-label text-white-50 small">Card Number</label>
+                                    <input type="text" class="form-control mb-3" placeholder="XXXX - XXXX - XXXX - XXXX">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="form-label text-white-50 small">Expiry</label>
+                                            <input type="text" class="form-control" placeholder="MM/YY">
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label text-white-50 small">CVV</label>
+                                            <input type="text" class="form-control" placeholder="XXX">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="p-3 rounded bg-dark border border-secondary">
+                                        <h6 class="text-white mb-3">Order Summary</h6>
+                                        <div class="d-flex justify-content-between small text-white-50 mb-2">
+                                            <span>Rate:</span>
+                                            <span id="summaryPrice">$45.00 / player</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between small text-white-50 mb-3">
+                                            <span>Players count:</span>
+                                            <span id="summaryCount">1</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between border-top border-secondary pt-2 fw-bold text-white">
+                                            <span>Total:</span>
+                                            <span id="summaryTotal" class="text-info">$45.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-secondary prev-step px-4"><i class="fa-solid fa-arrow-left me-2"></i> Back</button>
+                                <button type="button" class="btn btn-premium next-step px-4" id="submitPayment">Pay & Book Now</button>
+                            </div>
+                        </div>
+
+                        <div class="booking-step-content d-none" id="step-5">
+                            <div class="text-center py-4">
+                                <i class="fa-solid fa-circle-check text-success fs-1 mb-3"></i>
+                                <h4 class="text-white mb-2">Booking Confirmed!</h4>
+                                <p class="text-white-50 small mb-4">Your tickets are locked and registered to our reservation grids.</p>
+                                
+                                <div class="p-3 bg-dark border border-secondary rounded text-start mx-auto mb-4" style="max-width: 400px;">
+                                    <div class="d-flex justify-content-between border-bottom border-secondary pb-2 mb-2">
+                                        <span class="text-white-50 small">Ticket ID:</span>
+                                        <span class="text-white fw-bold" id="confirmID">VRN-XXXX-X</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-white-50 small">Adventure:</span>
+                                        <span class="text-white" id="confirmExp">Zombie Survival</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-white-50 small">Slot:</span>
+                                        <span class="text-white" id="confirmTime">June 25, 2026 @ 12:00 PM</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-white-50 small">Station Rig:</span>
+                                        <span class="text-white" id="confirmStation">Station Alpha</span>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-premium px-5" data-bs-dismiss="modal">Go to Dashboard</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 text-center text-lg-start">
+                    <a class="navbar-brand d-inline-block mb-4" href="index.html">
+                        <!-- SVG LOGO -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                          <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                          <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                          <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                          <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                          <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                          <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                          <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                          <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                          <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                        </svg>
+                    </a>
+                    <p class="text-white-50 mb-4">Location-based Virtual Reality Arcade center featuring next-gen motion pods, full haptics, and competitive esports leagues.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Explore</h5>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="events.html" class="footer-link">Events</a>
+                </div>
+                <div class="col-lg-2 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Resources</h5>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                    <a href="dashboard.html" class="footer-link">Dashboard</a>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-white-50 small mb-3">Subscribe for tournament updates and deals.</p>
+                    <div class="input-group mb-3 justify-content-center justify-content-md-start">
+                        <input type="email" class="form-control bg-transparent text-white border-secondary shadow-none" placeholder="Email Address">
+                        <button class="btn btn-premium" type="button">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center text-white-50 small">
+                <p class="mb-0">&copy; 2026 VR Nexus Arena. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

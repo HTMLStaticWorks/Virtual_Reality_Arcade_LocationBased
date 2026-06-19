@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Nexus Arena | The Future of Entertainment</title>
+    <meta name="description" content="Step beyond screen gaming. Experience next-gen location-based virtual reality entertainment for families, birthday parties, and corporate events.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    
+    <style>
+        .split-hero-img-wrap {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 229, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 991.98px) {
+            .hero-section {
+                display: block !important;
+                min-height: auto !important;
+                height: auto !important;
+                padding-top: 90px !important;
+                padding-bottom: 40px !important;
+            }
+            .split-hero-img-wrap img {
+                height: 300px !important;
+            }
+        }
+        .tech-badge {
+            background: rgba(109, 40, 255, 0.1);
+            color: var(--secondary-color);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-family: var(--font-alt);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        .event-card {
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+        .event-card img {
+            transition: var(--transition-smooth);
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .event-card:hover img {
+            transform: scale(1.08);
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080B14'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Cpath d='M18 26h28a2 2 0 0 1 2 2v6a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-6a2 2 0 0 1 2-2z' fill='%236D28FF'/%3E%3C/svg%3E">
+</head>
+<body class="dark-mode">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl fixed-top navbar-custom py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <!-- SVG LOGO -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                  <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                  <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                  <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                  <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                  <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                  <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                  <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                  <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                  <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                  <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                </svg>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <i class="fa-solid fa-bars fs-3"></i>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header justify-content-between border-bottom border-secondary">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <!-- SVG LOGO -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                          <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                          <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                          <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                          <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                          <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                          <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                          <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                          <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                          <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                        </svg>
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto align-items-xl-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home 1</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="home2.html">Home 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                        <li class="nav-item ms-xl-3 my-2 my-xl-0">
+                            <a href="login.html" class="btn btn-premium btn-sm w-100">Login</a>
+                        </li>
+
+                        <li class="nav-item ms-xl-3 d-flex gap-2 mt-3 mt-xl-0 align-items-center justify-content-center">
+                            <a href="#" id="rtl-toggle" class="topbar-action px-3" aria-label="Toggle RTL">RTL</a>
+                            <a href="#" id="theme-toggle" class="topbar-action px-3" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Split Hero Section -->
+    <header class="hero-section py-5">
+        <div class="hero-overlay"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="container hero-content pt-5">
+            <div class="row align-items-center g-5 text-start">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <span class="tech-badge">Next Generation Arcade</span>
+                    <h1 class="hero-title mb-4">The Future Of Entertainment Starts Here</h1>
+                    <p class="lead mb-4 text-white-50" style="max-height: 250px; overflow: hidden;">Immersive motion pods, dual-4K headsets, and squad battle arenas. Step beyond screen-based entertainment and feel every moment physically.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-column flex-sm-row mt-4">
+                        <button type="button" class="btn btn-premium px-5 py-3" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Session</button>
+                        <a href="#categories" class="btn btn-outline-premium px-5 py-3">View Categories</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="split-hero-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&q=80" alt="Multiplayer VR Gaming" class="img-fluid w-100" style="height: 400px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Experience Categories -->
+        <section id="categories" class="section-padding bg-light">
+            <div class="container">
+                <div class="text-center mb-5 fade-up">
+                    <h2 class="section-title">Experience Categories</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Choose your genre of choice. We host virtual experiences for everyone.</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Category 1 -->
+                    <div class="col-6 col-md-4 col-lg-3 fade-up d-flex">
+                        <div class="glass-card p-3 text-center h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                            <i class="fa-solid fa-compass fs-1 text-primary mb-3"></i>
+                            <h5>Adventure VR</h5>
+                        </div>
+                    </div>
+                    <!-- Category 2 -->
+                    <div class="col-6 col-md-4 col-lg-3 fade-up d-flex" style="transition-delay: 0.05s;">
+                        <div class="glass-card p-3 text-center h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                            <i class="fa-solid fa-biohazard fs-1 text-danger mb-3"></i>
+                            <h5>Zombie Survival</h5>
+                        </div>
+                    </div>
+                    <!-- Category 3 -->
+                    <div class="col-6 col-md-4 col-lg-3 fade-up d-flex" style="transition-delay: 0.1s;">
+                        <div class="glass-card p-3 text-center h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                            <i class="fa-solid fa-car-burst fs-1 text-warning mb-3"></i>
+                            <h5>Racing Simulator</h5>
+                        </div>
+                    </div>
+                    <!-- Category 4 -->
+                    <div class="col-6 col-md-4 col-lg-3 fade-up d-flex" style="transition-delay: 0.15s;">
+                        <div class="glass-card p-3 text-center h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                            <i class="fa-solid fa-user-astronaut fs-1 text-info mb-3"></i>
+                            <h5>Space Exploration</h5>
+                        </div>
+                    </div>
+                    <!-- Category 5 -->
+                    <div class="col-6 col-md-4 col-lg-3 fade-up d-flex">
+                        <div class="glass-card p-3 text-center h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                            <i class="fa-solid fa-key fs-1 text-success mb-3"></i>
+                            <h5>Escape Rooms</h5>
+                        </div>
+                    </div>
+                    <!-- Category 6 -->
+                    <div class="col-6 col-md-4 col-lg-3 fade-up d-flex" style="transition-delay: 0.05s;">
+                        <div class="glass-card p-3 text-center h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                            <i class="fa-solid fa-gun fs-1 text-primary mb-3"></i>
+                            <h5>Multiplayer Arena</h5>
+                        </div>
+                    </div>
+                    <!-- Category 7 -->
+                    <div class="col-6 col-md-4 col-lg-3 fade-up d-flex" style="transition-delay: 0.1s;">
+                        <div class="glass-card p-3 text-center h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                            <i class="fa-solid fa-face-smile fs-1 text-info mb-3"></i>
+                            <h5>Kids VR</h5>
+                        </div>
+                    </div>
+                    <!-- Category 8 -->
+                    <div class="col-6 col-md-4 col-lg-3 fade-up d-flex" style="transition-delay: 0.15s;">
+                        <div class="glass-card p-3 text-center h-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                            <i class="fa-solid fa-graduation-cap fs-1 text-warning mb-3"></i>
+                            <h5>Educational VR</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events & Packages -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="text-center mb-5 fade-up">
+                    <h2 class="section-title">Special Packages & Events</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Perfect entertainment options for group gatherings, team buildings, and tournaments.</p>
+                </div>
+
+                <div class="row g-4 justify-content-md-center">
+                    <!-- Event 1 -->
+                    <div class="col-md-6 col-lg-4 fade-up">
+                        <div class="glass-card event-card p-0 h-100 d-flex flex-column border-0">
+                            <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=800&q=80" alt="Family Packages">
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <h4 class="text-white mb-2">Family Packages</h4>
+                                <p class="text-muted small mb-4">Specially tailored game packages suitable for kids and parents. Fun, interactive, and completely safe.</p>
+                                <button type="button" class="btn btn-outline-premium btn-sm w-100 mt-auto" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Family Slot</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Event 2 -->
+                    <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.1s;">
+                        <div class="glass-card event-card p-0 h-100 d-flex flex-column border-0">
+                            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80" alt="Corporate Team Building">
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <h4 class="text-white mb-2">Corporate Events</h4>
+                                <p class="text-muted small mb-4">Build trust and foster communication through high-impact co-op VR missions. Full arena booking and snack bar inclusion.</p>
+                                <a href="contact.html" class="btn btn-outline-premium btn-sm w-100 mt-auto">Inquire Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Event 3 -->
+                    <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.2s;">
+                        <div class="glass-card event-card p-0 h-100 d-flex flex-column border-0">
+                            <img src="https://images.unsplash.com/photo-1596496181848-3091d4878b24?w=800&q=80" alt="Birthday Parties">
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <h4 class="text-white mb-2">Birthday Parties</h4>
+                                <p class="text-muted small mb-4">Give your child the ultimate futuristic birthday! VR gaming pods, dedicated hosts, and custom cake tables.</p>
+                                <a href="contact.html" class="btn btn-outline-premium btn-sm w-100 mt-auto">Book Party</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tournament Highlights -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 order-lg-2 fade-up">
+                        <div class="position-relative p-2" style="border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; background: rgba(255,255,255,0.01);">
+                            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&q=80" alt="Esports Tournament" class="img-fluid rounded-4 w-100" style="height: 350px; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1 fade-up text-center text-lg-start" style="transition-delay: 0.2s;">
+                        <span class="tech-badge" style="color: var(--accent-color); border-color: rgba(255, 77, 141, 0.2);">Weekly Tournaments</span>
+                        <h2 class="section-title text-center text-lg-start mb-4">Tournament Highlights</h2>
+                        <p class="text-muted mb-4">Join our competitive esports VR league. Compete with top-tier squad fighters in Cyber Assault and claim your spot on the live leaderboard dashboard. Weekly cash prizes and hardware giveaways await!</p>
+                        <a href="events.html" class="btn btn-premium">Join Next Bracket</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VR Technology Showcase -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="text-center mb-5 fade-up">
+                    <h2 class="section-title">VR Technology Showcase</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Peek under the hood. We invest heavily in premium haptics and rendering rigs.</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Tech 1 -->
+                    <div class="col-md-4 fade-up">
+                        <div class="glass-card p-4 text-center h-100">
+                            <i class="fa-solid fa-headset fs-1 text-info mb-3"></i>
+                            <h4 class="text-white">Dual-4K Rendering</h4>
+                            <p class="text-muted small">Headsets packing high density pixels that render virtual worlds in ultra-high definitions, keeping the frame rates at fluid 120Hz.</p>
+                        </div>
+                    </div>
+                    <!-- Tech 2 -->
+                    <div class="col-md-4 fade-up" style="transition-delay: 0.1s;">
+                        <div class="glass-card p-4 text-center h-100">
+                            <i class="fa-solid fa-vest fs-1 text-primary mb-3"></i>
+                            <h4 class="text-white">Bhaptics Tact Suits</h4>
+                            <p class="text-muted small">40 distinct feedback points across your torso and arms, registering gunshot impacts, explosions, and wind breezes.</p>
+                        </div>
+                    </div>
+                    <!-- Tech 3 -->
+                    <div class="col-md-4 fade-up" style="transition-delay: 0.2s;">
+                        <div class="glass-card p-4 text-center h-100">
+                            <i class="fa-solid fa-person-walking-arrow-right fs-1 text-danger mb-3"></i>
+                            <h4 class="text-white">Omnidirectional Treadmills</h4>
+                            <p class="text-muted small">Walk and run naturally in full 360-degree vectors inside virtual battlefields without risking physical collisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking CTA Section -->
+        <section class="section-padding position-relative overflow-hidden">
+            <div class="glow-orb" style="width: 500px; height: 500px; background: var(--primary-color); top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.2;"></div>
+            <div class="container position-relative z-2">
+                <div class="glass-card text-center py-5 fade-up" style="background: rgba(8,11,20,0.6) !important;">
+                    <h2 class="text-white mb-4">Ready to Step Beyond Reality?</h2>
+                    <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Secure your VR station today. Select your games, pick a suitable time slot, invite your friends, and skip the wait times!</p>
+                    <button type="button" class="btn btn-premium px-5 py-3" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Your Station Now</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 text-center text-lg-start">
+                    <a class="navbar-brand d-inline-block mb-4" href="index.html">
+                        <!-- SVG LOGO -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50" style="display: inline-block; vertical-align: middle;">
+                          <circle cx="25" cy="25" r="16" fill="none" class="logo-ring-1" stroke-width="2" opacity="0.8" />
+                          <circle cx="25" cy="25" r="19" fill="none" class="logo-ring-2" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.9" />
+                          <circle cx="25" cy="25" r="22" fill="none" class="logo-ring-3" stroke-width="1" opacity="0.6" />
+                          <path d="M12 21h26a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5v-4a3 3 0 0 1 3-3z" class="logo-visor" stroke-width="2" />
+                          <path d="M16 25h18" class="logo-visor-accent" stroke-width="1.5" stroke-linecap="round" />
+                          <circle cx="20" cy="28" r="1.5" class="logo-visor-dot" />
+                          <circle cx="30" cy="28" r="1.5" class="logo-visor-dot" />
+                          <path d="M9 25c-2 0-3-1-3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <path d="M41 25c2 0 3-1 3-3" fill="none" class="logo-ring-1" stroke-width="2" />
+                          <text class="logo-text-primary" x="54" y="24" font-family="'Sora', sans-serif" font-size="13" font-weight="800" letter-spacing="0.5">VR NEXUS</text>
+                          <text class="logo-text-secondary" x="54" y="38" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" letter-spacing="1.5">ARENA</text>
+                        </svg>
+                    </a>
+                    <p class="text-white-50 mb-4">Location-based Virtual Reality Arcade center featuring next-gen motion pods, full haptics, and competitive esports leagues.</p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle p-2" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Explore</h5>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="events.html" class="footer-link">Events</a>
+                </div>
+                <div class="col-lg-2 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Resources</h5>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                    <a href="dashboard.html" class="footer-link">Dashboard</a>
+                </div>
+                <div class="col-lg-4 col-md-4 text-center text-md-start">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p class="text-white-50 small mb-3">Subscribe for tournament updates and deals.</p>
+                    <div class="input-group mb-3 justify-content-center justify-content-md-start">
+                        <input type="email" class="form-control bg-transparent text-white border-secondary shadow-none" placeholder="Email Address">
+                        <button class="btn btn-premium" type="button">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center text-white-50 small">
+                <p class="mb-0">&copy; 2026 VR Nexus Arena. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content glass-card p-4 text-start" style="background: var(--dark-bg) !important; border: 1px solid var(--primary-color) !important; color: white !important;">
+                <div class="modal-header border-0 p-0 mb-4 justify-content-between">
+                    <h3 class="modal-title" id="bookingModalLabel" style="font-family: var(--font-heading); font-weight: 580; color: white !important;">Book Your VR Session</h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="d-flex justify-content-between mb-4 text-center position-relative">
+                        <div class="booking-step active" data-step="1" style="z-index: 1;">
+                            <span class="step-num d-block rounded-circle bg-primary text-white mx-auto mb-2" style="width: 30px; height: 30px; line-height: 30px;">1</span>
+                            <span class="step-title small" style="font-family: var(--font-alt);">Experience</span>
+                        </div>
+                        <div class="booking-step" data-step="2" style="z-index: 1;">
+                            <span class="step-num d-block rounded-circle bg-secondary text-white mx-auto mb-2" style="width: 30px; height: 30px; line-height: 30px; background-color: rgba(255,255,255,0.1) !important;">2</span>
+                            <span class="step-title small" style="font-family: var(--font-alt);">Date & Time</span>
+                        </div>
+                        <div class="booking-step" data-step="3" style="z-index: 1;">
+                            <span class="step-num d-block rounded-circle bg-secondary text-white mx-auto mb-2" style="width: 30px; height: 30px; line-height: 30px; background-color: rgba(255,255,255,0.1) !important;">3</span>
+                            <span class="step-title small" style="font-family: var(--font-alt);">Players</span>
+                        </div>
+                        <div class="booking-step" data-step="4" style="z-index: 1;">
+                            <span class="step-num d-block rounded-circle bg-secondary text-white mx-auto mb-2" style="width: 30px; height: 30px; line-height: 30px; background-color: rgba(255,255,255,0.1) !important;">4</span>
+                            <span class="step-title small" style="font-family: var(--font-alt);">Payment</span>
+                        </div>
+                        <div class="booking-step" data-step="5" style="z-index: 1;">
+                            <span class="step-num d-block rounded-circle bg-secondary text-white mx-auto mb-2" style="width: 30px; height: 30px; line-height: 30px; background-color: rgba(255,255,255,0.1) !important;">5</span>
+                            <span class="step-title small" style="font-family: var(--font-alt);">Confirm</span>
+                        </div>
+                        <div class="position-absolute" style="top: 15px; left: 10%; right: 10%; height: 2px; background: rgba(255,255,255,0.1); z-index: 0;"></div>
+                    </div>
+
+                    <form id="bookingForm">
+                        <!-- Step 1: Select Experience -->
+                        <div class="booking-step-content" id="step-1">
+                            <h4 class="mb-3" style="color: white !important;">Choose an Experience</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="glass-card p-3 experience-option cursor-pointer" data-exp="Zombie Survival" style="border: 1px solid rgba(255,255,255,0.1);">
+                                        <h5>Zombie Survival</h5>
+                                        <p class="small text-white-50 mb-0">Action/Horror | 45 Mins</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="glass-card p-3 experience-option cursor-pointer" data-exp="Space Exploration" style="border: 1px solid rgba(255,255,255,0.1);">
+                                        <h5>Space Exploration</h5>
+                                        <p class="small text-white-50 mb-0">Adventure/Sci-Fi | 60 Mins</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="glass-card p-3 experience-option cursor-pointer" data-exp="Racing Simulator" style="border: 1px solid rgba(255,255,255,0.1);">
+                                        <h5>Racing Simulator</h5>
+                                        <p class="small text-white-50 mb-0">Sports/Simulation | 30 Mins</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="glass-card p-3 experience-option cursor-pointer" data-exp="Multiplayer Battle Arena" style="border: 1px solid rgba(255,255,255,0.1);">
+                                        <h5>Battle Arena</h5>
+                                        <p class="small text-white-50 mb-0">Action/E-sports | 45 Mins</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end mt-4">
+                                <button type="button" class="btn btn-premium next-step">Next Step <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Date & Time -->
+                        <div class="booking-step-content d-none" id="step-2">
+                            <h4 class="mb-3" style="color: white !important;">Select Date & Time Slot</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-white-50 small">Date</label>
+                                    <input type="date" class="form-control text-white border-secondary bg-transparent shadow-none" id="bookingDate" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white-50 small">Station</label>
+                                    <select class="form-select text-white border-secondary bg-transparent shadow-none" id="bookingStation">
+                                        <option value="Station Alpha" style="background:#080B14; color:#fff;">Station Alpha (Standard Pod)</option>
+                                        <option value="Station Beta" style="background:#080B14; color:#fff;">Station Beta (Premium Pod)</option>
+                                        <option value="Station Gamma" style="background:#080B14; color:#fff;">Station Gamma (Racing Rig)</option>
+                                        <option value="Station Delta" style="background:#080B14; color:#fff;">Station Delta (Omni Treadmill)</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white-50 small">Available Time Slots</label>
+                                    <div class="row g-2" id="timeSlotsContainer">
+                                        <div class="col-4 col-sm-3"><button type="button" class="btn btn-outline-premium w-100 time-slot-btn" data-time="10:00 AM">10:00 AM</button></div>
+                                        <div class="col-4 col-sm-3"><button type="button" class="btn btn-outline-premium w-100 time-slot-btn" data-time="12:00 PM">12:00 PM</button></div>
+                                        <div class="col-4 col-sm-3"><button type="button" class="btn btn-outline-premium w-100 time-slot-btn" data-time="02:00 PM">02:00 PM</button></div>
+                                        <div class="col-4 col-sm-3"><button type="button" class="btn btn-outline-premium w-100 time-slot-btn" data-time="04:00 PM">04:00 PM</button></div>
+                                        <div class="col-4 col-sm-3"><button type="button" class="btn btn-outline-premium w-100 time-slot-btn" data-time="06:00 PM">06:00 PM</button></div>
+                                        <div class="col-4 col-sm-3"><button type="button" class="btn btn-outline-premium w-100 time-slot-btn" data-time="08:00 PM">08:00 PM</button></div>
+                                        <div class="col-4 col-sm-3"><button type="button" class="btn btn-outline-premium w-100 time-slot-btn" data-time="10:00 PM">10:00 PM</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-premium prev-step"><i class="fa-solid fa-arrow-left me-2"></i> Back</button>
+                                <button type="button" class="btn btn-premium next-step">Next Step <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Participants -->
+                        <div class="booking-step-content d-none" id="step-3">
+                            <h4 class="mb-3" style="color: white !important;">Add Participants</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-white-50 small">Number of Participants</label>
+                                    <input type="number" class="form-control text-white border-secondary bg-transparent shadow-none" id="bookingParticipants" min="1" max="8" value="1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white-50 small">Age Group</label>
+                                    <select class="form-select text-white border-secondary bg-transparent shadow-none" id="bookingAge">
+                                        <option style="background:#080B14; color:#fff;" value="Adults (18+)">Adults (18+)</option>
+                                        <option style="background:#080B14; color:#fff;" value="Teens (13-17)">Teens (13-17)</option>
+                                        <option style="background:#080B14; color:#fff;" value="Kids (8-12)">Kids (8-12)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-premium prev-step"><i class="fa-solid fa-arrow-left me-2"></i> Back</button>
+                                <button type="button" class="btn btn-premium next-step">Next Step <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Online Payment Mockup -->
+                        <div class="booking-step-content d-none" id="step-4">
+                            <h4 class="mb-3" style="color: white !important;">Online Payment</h4>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="glass-card p-3 mb-3" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="small text-white-50">Experience Price:</span>
+                                            <span class="fw-bold" id="summaryPrice">$45.00 / player</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="small text-white-50">Players Count:</span>
+                                            <span class="fw-bold" id="summaryCount">1</span>
+                                        </div>
+                                        <hr class="border-secondary">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="fw-bold">Total Amount:</span>
+                                            <span class="fw-bold text-info" id="summaryTotal">$45.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white-50 small">Cardholder Name</label>
+                                    <input type="text" class="form-control text-white border-secondary bg-transparent shadow-none" placeholder="John Doe">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white-50 small">Card Number</label>
+                                    <input type="text" class="form-control text-white border-secondary bg-transparent shadow-none" placeholder="1234 5678 1234 5678">
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label text-white-50 small">Expiration Date</label>
+                                    <input type="text" class="form-control text-white border-secondary bg-transparent shadow-none" placeholder="MM/YY">
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label text-white-50 small">CVV</label>
+                                    <input type="password" class="form-control text-white border-secondary bg-transparent shadow-none" placeholder="***">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-premium prev-step"><i class="fa-solid fa-arrow-left me-2"></i> Back</button>
+                                <button type="button" class="btn btn-premium next-step" id="submitPayment">Pay & Confirm <i class="fa-solid fa-check ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Booking Confirmation -->
+                        <div class="booking-step-content d-none text-center" id="step-5">
+                            <div class="py-4">
+                                <i class="fa-solid fa-circle-check fs-1 text-success mb-3"></i>
+                                <h3 class="text-white mb-2" style="color: white !important;">Booking Confirmed!</h3>
+                                <p class="text-white-50 small mb-4">Your VR adventure has been successfully scheduled. Show the QR code below at check-in.</p>
+                                
+                                <div class="bg-white p-3 d-inline-block rounded mb-4" style="box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 29 29">
+                                        <path d="M0 0h9v9H0zm1 1v7h7V1zm1 1v5h5V2zm7 7h1v1h-1zm-7 1h1v1H0zm1 0h7v1H1zm7 0h1v1h-1zm-7 1h1v1H1zm1 0h2v1H2zm3 0h2v1H5zm2 0h1v1H7zm1 0h1v1h-1zm-8 1h1v1H0zm2 0h2v1H2zm3 0h1v1H5zm3 0h1v1h-1z" fill="#000"/>
+                                    </svg>
+                                </div>
+                                
+                                <div class="glass-card p-3 mx-auto text-start" style="max-width: 400px; background: rgba(255,255,255,0.05);">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="small text-white-50">Booking ID:</span>
+                                        <span class="fw-bold text-info" id="confirmID">VRN-8942-X</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="small text-white-50">Experience:</span>
+                                        <span class="fw-bold" id="confirmExp">Zombie Survival</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="small text-white-50">Date & Time:</span>
+                                        <span class="fw-bold" id="confirmTime">2026-06-25 @ 12:00 PM</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="small text-white-50">Station:</span>
+                                        <span class="fw-bold" id="confirmStation">Station Alpha</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <button type="button" class="btn btn-premium px-5" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
