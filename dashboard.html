@@ -316,6 +316,8 @@
             background: var(--theme-card);
             backdrop-filter: blur(16px);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
         }
 
         .metric-card {
@@ -507,6 +509,16 @@
                 align-items: center !important;
             }
         }
+
+        /* Fix: Align card layouts in Dashboard page */
+        .dashboard-content .row > div {
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-content .row > div > .dashboard-card {
+            width: 100%;
+            flex-grow: 1;
+        }
     </style>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080B14'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Cpath d='M18 26h28a2 2 0 0 1 2 2v6a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-6a2 2 0 0 1 2-2z' fill='%236D28FF'/%3E%3C/svg%3E">
 </head>
@@ -631,8 +643,8 @@
                                         <span class="badge bg-success flex-shrink-0">Confirmed</span>
                                     </div>
                                     <h4 class="text-white mb-2" style="font-family: var(--font-heading);">Zombie Survival (Station Alpha)</h4>
-                                    <p class="text-white-50 small mb-0"><i class="fa-regular fa-clock me-1"></i> June 25, 2026 at 12:00 PM | 2 Players</p>
-                                    <div class="d-flex flex-column flex-sm-row gap-2">
+                                    <p class="text-white-50 small mb-3"><i class="fa-regular fa-clock me-1"></i> June 25, 2026 at 12:00 PM | 2 Players</p>
+                                    <div class="d-flex flex-column flex-sm-row gap-2 mt-auto pt-3">
                                         <button class="btn btn-premium btn-sm mobile-full-width" data-bs-toggle="modal" data-bs-target="#qrModal">View Ticket QR</button>
                                         <a href="#bookings" class="btn btn-outline-premium btn-sm mobile-full-width">See Bookings</a>
                                     </div>
@@ -815,7 +827,7 @@
                                     <p class="metric-label">Station Alpha</p>
                                     <h5 class="text-white mb-2">Zombie Survival</h5>
                                     <p class="text-white-50 small mb-3">Co-op survival mission for 2 players.</p>
-                                    <button class="btn btn-outline-premium btn-sm w-100">Open Session</button>
+                                    <button class="btn btn-outline-premium btn-sm w-100 mt-auto">Open Session</button>
                                 </div>
                             </div>
                             <div class="col">
@@ -823,7 +835,7 @@
                                     <p class="metric-label">Racing Arena</p>
                                     <h5 class="text-white mb-2">Simulator Challenge</h5>
                                     <p class="text-white-50 small mb-3">Competitive laps with full motion feedback.</p>
-                                    <button class="btn btn-outline-premium btn-sm w-100">Open Session</button>
+                                    <button class="btn btn-outline-premium btn-sm w-100 mt-auto">Open Session</button>
                                 </div>
                             </div>
                             <div class="col">
@@ -831,7 +843,7 @@
                                     <p class="metric-label">Space Deck</p>
                                     <h5 class="text-white mb-2">Exploration Mission</h5>
                                     <p class="text-white-50 small mb-3">Group adventure designed for 4 players.</p>
-                                    <button class="btn btn-outline-premium btn-sm w-100">Open Session</button>
+                                    <button class="btn btn-outline-premium btn-sm w-100 mt-auto">Open Session</button>
                                 </div>
                             </div>
                         </div>
@@ -911,14 +923,14 @@
                                 <div class="dashboard-card p-4 h-100">
                                     <p class="metric-label">Theme</p>
                                     <p class="text-white-50 small mb-3">Use the top bar button to switch appearance.</p>
-                                    <a href="#" id="theme-toggle-settings" class="btn btn-outline-premium btn-sm w-100">Toggle Theme</a>
+                                    <a href="#" id="theme-toggle-settings" class="btn btn-outline-premium btn-sm w-100 mt-auto">Toggle Theme</a>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="dashboard-card p-4 h-100">
                                     <p class="metric-label">RTL</p>
                                     <p class="text-white-50 small mb-3">Switch layout direction from the top bar control.</p>
-                                    <a href="#" id="rtl-toggle-settings" class="btn btn-outline-premium btn-sm w-100">Toggle RTL</a>
+                                    <a href="#" id="rtl-toggle-settings" class="btn btn-outline-premium btn-sm w-100 mt-auto">Toggle RTL</a>
                                 </div>
                             </div>
                             <div class="col">

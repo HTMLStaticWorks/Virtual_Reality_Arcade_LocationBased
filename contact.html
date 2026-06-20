@@ -14,10 +14,36 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .social-btn {
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition-smooth);
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .social-btn:hover {
+            color: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+            transform: translateY(-3px);
+        }
+        body:not(.dark-mode) .social-btn {
+            color: #1E293B !important;
+            border-color: rgba(30, 41, 59, 0.2) !important;
+        }
+        body:not(.dark-mode) .social-btn:hover {
+            background-color: var(--primary-color) !important;
+            color: #ffffff !important;
+            border-color: var(--primary-color) !important;
+        }
+    </style>
     <link rel="stylesheet" href="assets/css/dark-mode.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080B14'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Cpath d='M18 26h28a2 2 0 0 1 2 2v6a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-6a2 2 0 0 1 2-2z' fill='%236D28FF'/%3E%3C/svg%3E">
+    <link class="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080B14'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%2300E5FF' stroke-width='2'/%3E%3Cpath d='M18 26h28a2 2 0 0 1 2 2v6a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4v-6a2 2 0 0 1 2-2z' fill='%236D28FF'/%3E%3C/svg%3E">
 </head>
 <body class="dark-mode">
 
@@ -196,6 +222,23 @@
                             <div>
                                 <h6 class="mb-1 text-white">Open Hours</h6>
                                 <p class="text-white-50 small mb-0">Mon - Thu: 12 PM - 10 PM<br>Fri - Sun: 10 AM - 12 AM</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Icons -->
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rounded-circle bg-dark d-flex justify-content-center align-items-center me-3 flex-shrink-0" style="width: 50px; height: 50px;">
+                                <i class="fa-solid fa-share-nodes text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-2 text-white">Connect With Us</h6>
+                                <div class="d-flex gap-2">
+                                    <a href="#" class="btn btn-outline-light rounded-circle social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="#" class="btn btn-outline-light rounded-circle social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                                    <a href="#" class="btn btn-outline-light rounded-circle social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="#" class="btn btn-outline-light rounded-circle social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                                    <a href="#" class="btn btn-outline-light rounded-circle social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                                </div>
                             </div>
                         </div>
 
