@@ -109,3 +109,24 @@ body.dark-mode .table {
 body.dark-mode .table th, body.dark-mode .table td {
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
+
+body.dark-mode .form-control.bg-transparent::-webkit-input-placeholder {
+  color: #ffffff80 !important;
+  opacity: 1 !important;
+}
+body.dark-mode .form-control.bg-transparent::-moz-placeholder {
+  color: #ffffff80 !important;
+  opacity: 1 !important;
+}
+body.dark-mode .form-control.bg-transparent:-ms-input-placeholder {
+  color: #ffffff80 !important;
+  opacity: 1 !important;
+}
+body.dark-mode .form-control.bg-transparent::placeholder {
+  color: #ffffff80 !important;
+  opacity: 1 !important;
+}
+
+body.dark-mode .form-control.bg-transparent {
+  color: #ffffff80 !important;
+}
